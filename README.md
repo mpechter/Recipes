@@ -1,6 +1,9 @@
 # Recipes
 
-This project will enable the user to generate a set of recipes, then select which of those they'd like to make in a given week.
+This project will enable the user to:
 
-They will be shown what grocery items they'll need to buy and will have the opportunity to remove items that they already have.
+ - Generate a set of recipes
+ - select which of those they'd like to make in a given week.
+ 
+ They will then be shown what grocery items they'll need to buy, organized by type.
 
