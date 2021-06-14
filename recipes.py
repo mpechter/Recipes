@@ -14,4 +14,22 @@ def add_recipe():
 
     print(recipe_dic)
 
-add_recipe()
+def get_recipes():
+    recipes = open('recipes.txt','r')
+
+    print(recipes.read())
+
+def menu():
+
+    selection = input('''
+    1. Add Recipes
+    2. View Recipes
+    
+    ''')
+    if selection == "1":
+        add_recipe()
+    else:
+        get_recipes()
+
+
+menu()
