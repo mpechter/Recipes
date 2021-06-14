@@ -12,16 +12,4 @@ def get_recipe():
 
         again = input("Would you like to add another item? (y/n) ")
 
-    return recipe_dic
-
-def main():
-    init = 'y'
-    list_of_recipes = []
-    
-    while init == 'y':
-        list_of_recipes.append(get_recipe())
-        init = input("Would you like to enter a recipe? (y/n) ")
-
-    print(list_of_recipes)
-
-main()
+    print(recipe_dic)
