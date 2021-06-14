@@ -1,4 +1,4 @@
-def get_recipe():
+def add_recipe():
     
     again = 'y'
     recipe_dic = {}
@@ -13,3 +13,5 @@ def get_recipe():
         again = input("Would you like to add another item? (y/n) ")
 
     print(recipe_dic)
+
+add_recipe()
