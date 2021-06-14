@@ -15,6 +15,9 @@ def add_recipe():
     print(recipe_dic)
 
 def get_recipes():
+
+##We have to make sure to create a file if there is none. 
+
     recipes = open('recipes.txt','r')
 
     print(recipes.read())
