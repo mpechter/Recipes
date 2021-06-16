@@ -32,16 +32,29 @@ def get_recipes():
         recipes = open('recipes.txt','a')
         print("No recipes entered; New file created.")
 
-    recipe_list = []
-
+    recipe_dic = {}
+    inner_dic = {}
+    item_dic = {}
     count = 0
+    recipe_name = ''
 
     for line in recipes:
         if line.rstrip().isalpha() and not ',' in line:
-            print(line.rstrip())
+            recipe_name = line.rstrip()
+            print(recipe_name)
             count = count + 1
+        elif ',' in line:
+            item_list = line.split(', ')
+            item_dic[item_list[0]] = item_list[1].rstrip()
+        elif line == '\n':
+            recipe_dic[recipe_name] = item_dic
+            item_dic = {}
+
+    recipe_dic[recipe_name] = item_dic
 
     print("We found " + str(count) + " recipes.")
+
+    print(recipe_dic)
 
     recipes.close()
 
