@@ -52,9 +52,7 @@ def get_recipes():
 
     recipe_dic[recipe_name] = ingredient_list
 
-    print("We found " + str(count) + " recipes.")
-
-    print(recipe_dic)
+    return(recipe_dic)
 
     recipes.close()
 
@@ -64,7 +62,6 @@ def menu():
     selection = input('''
     1. Add Recipes
     2. View Recipes
-    3. Get Recipes
     
     ''')
 
@@ -72,8 +69,6 @@ def menu():
         add_recipe()
     elif selection == '2':
         view_recipes()
-    elif selection == '3':
-        get_recipes()
 
 
 menu()
