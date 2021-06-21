@@ -37,7 +37,6 @@ def get_recipes():
         #In our format, if the line has letters but no commas, it is a recipe name. 
         if line.rstrip().isalpha() and not ',' in line:
             recipe_name = line.rstrip()
-            print(recipe_name)
             count = count + 1
         #Any line with a comma is a line with an item and amount. 
         elif ',' in line:
@@ -56,12 +55,24 @@ def get_recipes():
 
     recipes.close()
 
+def create_menu():
 
-def menu():
+    menu_string = input('What are you going to make this week? ')
+    menu_list = menu_string.split(', ')
+
+    recipes_dic = get_recipes()
+
+    for dish in menu_list:
+        print("To make " + dish + " you will need:")
+        print(recipes_dic[dish])
+
+
+def main():
 
     selection = input('''
     1. Add Recipes
     2. View Recipes
+    3. Create the week's menu!
     
     ''')
 
@@ -69,6 +80,8 @@ def menu():
         add_recipe()
     elif selection == '2':
         view_recipes()
+    elif selection == '3':
+        create_menu()
 
 
-menu()
+main()
