@@ -10,3 +10,15 @@ Cucumber, 1
 Red Onion, 1
 Hummus, 1
 Tahini, 1
+
+MegaBeans
+Beans, 12
+Salt, 1
+Radishes, 5
+Spunky, 7
+
+Lemonade
+Lemons, 5
+Water, 4
+Sugar, 8
+Love, Always

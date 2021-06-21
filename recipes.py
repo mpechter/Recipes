@@ -33,24 +33,28 @@ def get_recipes():
         print("No recipes entered; New file created.")
 
     recipe_dic = {}
-    inner_dic = {}
-    item_dic = {}
+    ingredients_list = []
     count = 0
     recipe_name = ''
 
     for line in recipes:
+        #In our format, if the line has letters but no commas, it is a recipe name. 
         if line.rstrip().isalpha() and not ',' in line:
             recipe_name = line.rstrip()
             print(recipe_name)
             count = count + 1
+        #Any line with a comma is a line with an item and amount. 
         elif ',' in line:
-            item_list = line.split(', ')
-            item_dic[item_list[0]] = item_list[1].rstrip()
-        elif line == '\n':
-            recipe_dic[recipe_name] = item_dic
-            item_dic = {}
+            item_amount = [line.rstrip()]
+            ingredients_list.append(item_amount)
 
-    recipe_dic[recipe_name] = item_dic
+        #Thus when we reach a blank line, we know we've reached the end of a recipe. 
+        elif line == '\n':
+            recipe_dic[recipe_name] = ingredients_list
+            #We need to reset this list so ingredients for the previous items aren't preserved. 
+            ingredients_list = []
+
+    recipe_dic[recipe_name] = ingredients_list
 
     print("We found " + str(count) + " recipes.")
 
