@@ -1,18 +1,14 @@
 def add_recipe():
-    
-    again = 'y'
-    recipe_dic = {}
 
+    ingredient_list = []
+    item_amount = "_"
     name = input("Enter recipe name: ")
 
-    while again == 'y':
-        item = input("Enter item: ")
-        amount = input("Enter amount: ")
-        recipe_dic[item] = amount
+    while len(item_amount) > 0:
+        item_amount = input("Enter item and amount, separated by a comma: ")
+        ingredient_list.append(item_amount)
 
-        again = input("Would you like to add another item? (y/n) ")
-
-    print(recipe_dic)
+    print(ingredient_list)
 
 def view_recipes():
 
@@ -33,7 +29,7 @@ def get_recipes():
         print("No recipes entered; New file created.")
 
     recipe_dic = {}
-    ingredients_list = []
+    ingredient_list = []
     count = 0
     recipe_name = ''
 
@@ -45,19 +41,16 @@ def get_recipes():
             count = count + 1
         #Any line with a comma is a line with an item and amount. 
         elif ',' in line:
-            split_list = line.rstrip().split(', ')
-            item_amount = split_list
-            #item_amount.append([split_list[0].rstrip()])
-            #item_amount.append([split_list[1].rstrip()])
-            ingredients_list.append(item_amount)
+            item_amount =line.rstrip().split(', ')
+            ingredient_list.append(item_amount)
 
         #Thus when we reach a blank line, we know we've reached the end of a recipe. 
         elif line == '\n':
-            recipe_dic[recipe_name] = ingredients_list
+            recipe_dic[recipe_name] = ingredient_list
             #We need to reset this list so ingredients for the previous items aren't preserved. 
-            ingredients_list = []
+            ingredient_list = []
 
-    recipe_dic[recipe_name] = ingredients_list
+    recipe_dic[recipe_name] = ingredient_list
 
     print("We found " + str(count) + " recipes.")
 
