@@ -45,7 +45,10 @@ def get_recipes():
             count = count + 1
         #Any line with a comma is a line with an item and amount. 
         elif ',' in line:
-            item_amount = [line.rstrip()]
+            split_list = line.rstrip().split(', ')
+            item_amount = split_list
+            #item_amount.append([split_list[0].rstrip()])
+            #item_amount.append([split_list[1].rstrip()])
             ingredients_list.append(item_amount)
 
         #Thus when we reach a blank line, we know we've reached the end of a recipe. 
