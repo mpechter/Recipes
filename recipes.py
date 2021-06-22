@@ -28,8 +28,6 @@ def add_recipe():
     
     recipes.close()
 
-
-
 def view_recipes():
     try:
         recipes = open('recipes.txt','r')
@@ -91,9 +89,7 @@ def create_menu():
 
     for item in shopping_list:
         print(item)
-
-
-
+        
 def main():
 
     selection = input('''
