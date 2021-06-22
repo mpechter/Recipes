@@ -59,12 +59,20 @@ def create_menu():
 
     menu_string = input('What are you going to make this week? ')
     menu_list = menu_string.split(', ')
-
+    item_string = ''
     recipes_dic = get_recipes()
 
     for dish in menu_list:
-        print("To make " + dish + " you will need:")
-        print(recipes_dic[dish])
+        ingredient_list = (recipes_dic[dish])
+        for item in ingredient_list:
+            ingredient_string = item[0] + ', ' + item[1]
+            shopping_list.append(ingredient_string)
+
+    print("To make "+ menu_string + " you'll need:")
+
+    for item in shopping_list:
+        print(item)
+
 
 
 def main():
@@ -83,5 +91,5 @@ def main():
     elif selection == '3':
         create_menu()
 
-
+shopping_list = []
 main()
