@@ -8,26 +8,26 @@ def add_recipe():
         item_amount = input("Enter item and amount, separated by a comma: ")
         ingredient_list.append(item_amount)
 
+    
+
     print(ingredient_list)
 
-def view_recipes():
-
+def open_or_create():
+    #This function will open the existing recipes.txt file or create a new one. 
     try:
         recipes = open('recipes.txt','r')
-        print(recipes.read())
     except:
         recipes = open('recipes.txt','a')
         print("No recipes entered; New file created.")
+    return recipes
 
+def view_recipes():
+    recipes = open_or_create()
+    print(recipes.read())
     recipes.close()
 
 def get_recipes():
-    try:
-        recipes = open('recipes.txt','r')
-    except:
-        recipes = open('recipes.txt','a')
-        print("No recipes entered; New file created.")
-
+    recipes = open_or_create()
     recipe_dic = {}
     ingredient_list = []
     count = 0
