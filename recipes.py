@@ -8,26 +8,44 @@ def add_recipe():
         item_amount = input("Enter item and amount, separated by a comma: ")
         ingredient_list.append(item_amount)
 
+    try:
+        recipes = open('recipes.txt','a')
+    except:
+        recipes = open('recipes.txt','a')
+        print("No recipes entered; New file created.")
+
+    #Write the recipe's title.
+    recipes.write(name)
+    recipes.write('\n')
+    print('Recipe successfully added for ' + name + ': ')
+
+    #Write each item in the recipe.
+    count = len(ingredient_list)
+    for item in ingredient_list:
+        recipes.write(item)
+        recipes.write('\n')
+        print(item)
     
+    recipes.close()
 
-    print(ingredient_list)
 
-def open_or_create():
-    #This function will open the existing recipes.txt file or create a new one. 
+
+def view_recipes():
+    try:
+        recipes = open('recipes.txt','r')
+        print(recipes.read())
+    except:
+        recipes = open('recipes.txt','a')
+        print("No recipes entered; New file created.")
+    recipes.close()
+
+def get_recipes():
     try:
         recipes = open('recipes.txt','r')
     except:
         recipes = open('recipes.txt','a')
         print("No recipes entered; New file created.")
-    return recipes
-
-def view_recipes():
-    recipes = open_or_create()
-    print(recipes.read())
-    recipes.close()
-
-def get_recipes():
-    recipes = open_or_create()
+        return
     recipe_dic = {}
     ingredient_list = []
     count = 0
@@ -68,6 +86,7 @@ def create_menu():
             ingredient_string = item[0] + ', ' + item[1]
             shopping_list.append(ingredient_string)
 
+    print()
     print("To make "+ menu_string + " you'll need:")
 
     for item in shopping_list:

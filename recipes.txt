@@ -11,14 +11,20 @@ Red Onion, 1
 Hummus, 1
 Tahini, 1
 
-MegaBeans
-Beans, 12
-Salt, 1
-Radishes, 5
-Spunky, 7
+Tacos
+Beans, 4
+Spices, 3
+Wraps
 
-Lemonade
-Lemons, 5
-Water, 4
-Sugar, 8
-Love, Always
+Tofu
+Tofu, 4
+Soy Sauce, 1
+Sesame Oil, 1
+Tom's Tacos
+Beans, 1
+Cheese, 1
+
+Super-Tacos
+SuperBeans, 1
+Cheese, 1
+
