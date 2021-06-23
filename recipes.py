@@ -32,7 +32,6 @@ def get_recipes():
             #We need to reset this list so ingredients for the previous items aren't preserved. 
             ingredient_list = []
 
-    #recipe_dic[recipe_name] = ingredient_list
     recipes.close()
     return(recipe_dic)
 
@@ -47,6 +46,7 @@ def view_recipes():
         print('Recipes in the system are:')
         for recipe in recipe_list:
             print(recipe)
+    #If no file can be found, we create an empty one. 
     except:
         recipes = open('recipes.txt','a')
         print("No recipes entered; New file created.")
@@ -90,7 +90,6 @@ def add_recipe():
 
 def create_menu():
     shopping_list = []
-    #menu_string = ''
     menu_string = input('What are you going to make this week? ')
     if len(menu_string) == 0:
         return
@@ -109,7 +108,7 @@ def create_menu():
             ingredient_string = item[0] + ', ' + item[1]
             shopping_list.append(ingredient_string)
     #This next sequence just adds 'and' to the string before the final item.
-    if(len(menu_list)>1):
+    if(len(menu_list) > 1):
         last = menu_list[-1]
         last_remove = ', ' + last
         menu_string = menu_string.replace(last_remove, ' and ')
@@ -130,8 +129,8 @@ def menu():
         selection = input('''
 MAIN MENU:
 1. View Recipes
-2. Add Recipes
-3. Create the week's menu!
+2. Add a Recipe
+3. Create a Menu
     
         ''')
 
@@ -142,4 +141,5 @@ MAIN MENU:
         elif selection == '3':
             create_menu()
 
-menu()
+if __name__ =='__main__':
+    menu()
