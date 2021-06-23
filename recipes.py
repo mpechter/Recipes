@@ -16,26 +16,23 @@ def get_recipes():
         return
     recipe_dic = {}
     ingredient_list = []
-    count = 0
     recipe_name = ''
 
     for line in recipes:
         #In our format, if the line has letters but no commas, it is a recipe name. 
-        if line.rstrip().isalpha() and not ',' in line:
+        if isName(line):
             recipe_name = line.rstrip()
-            count = count + 1
         #Any line with a comma is a line with an item and amount. 
         elif ',' in line:
             item_amount =line.rstrip().split(', ')
             ingredient_list.append(item_amount)
-
         #Thus when we reach a blank line, we know we've reached the end of a recipe. 
-        elif line == '\n':
+        elif line == '\n' or len(line) == 0:
             recipe_dic[recipe_name] = ingredient_list
             #We need to reset this list so ingredients for the previous items aren't preserved. 
             ingredient_list = []
 
-    recipe_dic[recipe_name] = ingredient_list
+    #recipe_dic[recipe_name] = ingredient_list
     recipes.close()
     return(recipe_dic)
 
@@ -92,7 +89,8 @@ def add_recipe():
     return
 
 def create_menu():
-
+    shopping_list = []
+    #menu_string = ''
     menu_string = input('What are you going to make this week? ')
     if len(menu_string) == 0:
         return
@@ -101,15 +99,21 @@ def create_menu():
     recipes_dic = get_recipes()
 
     for dish in menu_list:
-        ingredient_list = (recipes_dic[dish])
+        try: 
+            ingredient_list = (recipes_dic[dish])
+        except: 
+            print('\nRecipe name not recognized. Please try again.')
+            cont = input('\nClick any key to continue.')
+            return
         for item in ingredient_list:
             ingredient_string = item[0] + ', ' + item[1]
             shopping_list.append(ingredient_string)
-    #This next sequence just adds 'and' to the string before the final item. 
-    last = menu_list[-1]
-    last_remove = ', ' + last
-    menu_string = menu_string.replace(last_remove, ' and ')
-    menu_string = menu_string + last
+    #This next sequence just adds 'and' to the string before the final item.
+    if(len(menu_list)>1):
+        last = menu_list[-1]
+        last_remove = ', ' + last
+        menu_string = menu_string.replace(last_remove, ' and ')
+        menu_string = menu_string + last
 
     print("\nTo make "+ menu_string + " you'll need: \n")
     shopping_list.sort()
@@ -117,6 +121,7 @@ def create_menu():
         print(item)
 
     cont = input('\nClick any key to continue.')
+    return
         
 def menu():
 
@@ -137,6 +142,4 @@ MAIN MENU:
         elif selection == '3':
             create_menu()
 
-shopping_list = []
-menu_string = ''
 menu()
