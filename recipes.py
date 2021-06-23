@@ -105,8 +105,14 @@ def create_menu():
         for item in ingredient_list:
             ingredient_string = item[0] + ', ' + item[1]
             shopping_list.append(ingredient_string)
-    #print()
+    #This next sequence just adds 'and' to the string before the final item. 
+    last = menu_list[-1]
+    last_remove = ', ' + last
+    menu_string = menu_string.replace(last_remove, ' and ')
+    menu_string = menu_string + last
+
     print("\nTo make "+ menu_string + " you'll need: \n")
+    shopping_list.sort()
     for item in shopping_list:
         print(item)
 
