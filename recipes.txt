@@ -1,40 +1,5 @@
 Bread
-Bread Flour, 1
-Wheat Flour, 1
+Flour, 1
 Salt, 1
 Yeast, 1
-
-Falafel
-Chick Peas, 1
-Cucumber, 1
-Red Onion, 1
-Hummus, 1
-Tahini, 1
-
-Tacos
-Beans, 4
-Spices, 3
-Wraps, 1
-
-Tofu
-Tofu, 4
-Soy Sauce, 1
-Sesame Oil, 1
-
-Tom's Tacos
-Beans, 1
-Cheese, 1
-
-Super-Tacos
-SuperBeans, 1
-Cheese, 1
-
-Yams
-Yams, 1
-Tomatoes, 2
-
-Bowling Balls
-Tacks, 1
-Sand, 3
-Troublemakers, 5
 
